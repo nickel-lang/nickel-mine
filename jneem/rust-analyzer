@@ -1,1 +1,2 @@
 {"org":"jneem","name":"rust-analyzer","vers":"0.1.0","nickel_vers":"1.6.0","loc":{"Github":{"org":"jneem","name":"rust-analyzer-nickel","rev":"d13e94577b62f6ba46c43ded3ce04ccbf4802026"}},"deps":[{"org":"jneem","name":"json-schema-lib","req":"^0.1.0"}],"v":0}
+{"org":"jneem","name":"rust-analyzer","vers":"0.1.0","nickel_vers":"1.6.0","loc":{"Github":{"org":"jneem","name":"rust-analyzer-nickel","rev":"d13e94577b62f6ba46c43ded3ce04ccbf4802026"}},"deps":[{"org":"jneem","name":"json-schema-lib","req":"^0.1.0"}],"v":0}
