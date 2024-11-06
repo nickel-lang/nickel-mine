@@ -1,0 +1,1 @@
+{"id":{"github":{"org":"jneem","name":"rust-analyzer-nickel","commit":"a6f1db0c351ea4d78d64111c287cb8358d595174"}},"vers":"0.1.0","nickel_vers":"1.6.0","deps":{"json-schema-lib":{"Github":{"org":"jneem","name":"json-schema-lib"},"req":"0.1.0"}},"v":0}
