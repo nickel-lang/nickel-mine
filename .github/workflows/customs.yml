@@ -14,6 +14,7 @@ jobs:
 
       - name: Customs check
         run: |
+          chmod +x ./nickel-customs
           ./nickel-customs \
             --reporter ${{ github.event.pull_request.user.login }} \
             --pr ${{ github.event.pull_request.number }} \
