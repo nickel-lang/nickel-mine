@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Download nickel-customs
         run: gh release download v0.1.0 --repo nickel-lang/nickel-customs
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Customs check
         run: |
@@ -17,5 +19,5 @@ jobs:
             --pr ${{ github.event.pull_request.number }} \
             --owner ${{ github.repository_owner }} \
             --repo ${{ github.event.repository.name }} \
-            --token ${{ secrets.GITHUB_TOKEN }}
+            --token ${{ github.token }}
         
