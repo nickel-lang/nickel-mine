@@ -1,0 +1,21 @@
+name: nickel-customs
+
+on:
+  pull_request:
+
+jobs:
+  customs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download nickel-customs
+        run: gh release download v0.1.0 --repo nickel-lang/nickel-customs
+
+      - name: Customs check
+        run: |
+          ./nickel-customs \
+            --reporter ${{ github.event.pull_request.user.login }} \
+            --pr ${{ github.event.pull_request.number }} \
+            --owner ${{ github.repository_owner }} \
+            --repo ${{ github.event.repository.name }} \
+            --token ${{ secrets.GITHUB_TOKEN }}
+        
