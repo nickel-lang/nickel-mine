@@ -15,6 +15,9 @@ on:
       pr_user:
         description: 'User that opened the pull request'
         required: true
+      customs_branch:
+        description: 'The branch in nickel-customs to test'
+        default: 'main'
 
 jobs:
   customs:
@@ -26,10 +29,11 @@ jobs:
       - name: Restore cache
         uses: Swatinem/rust-cache@v2
 
-      - name: Download and build nickel-customs (main branch)
+      - name: Download and build nickel-customs
         run: |
           git clone https://github.com/nickel-lang/nickel-customs
           cd nickel-customs
+          git checkout ${{ github.event.inputs.customs_branch }}
           cargo build
 
       - name: Customs check
