@@ -1,0 +1,43 @@
+# This job is for testing nickel-customs; it allows using an unreleased
+# version.
+
+env:
+  RUST_STABLE_VER: "1.87"
+
+name: nickel-customs-prerelease
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'Pull request number'
+        required: true
+      pr_user:
+        description: 'User that opened the pull request'
+        required: true
+
+jobs:
+  customs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Rust ${{ env.RUST_STABLE_VER }}
+        run: rustup toolchain install ${{ env.RUST_STABLE_VER }}
+
+      - name: Restore cache
+        uses: Swatinem/rust-cache@v2
+
+      - name: Download and build nickel-customs (main branch)
+        run: |
+          git clone https://github.com/nickel-lang/nickel-customs
+          cd nickel-customs
+          cargo build
+
+      - name: Customs check
+        run: |
+          ./nickel-customs/target/debug/nickel-customs \
+            --reporter ${{ github.event.inputs.pr_user }} \
+            --pr ${{ github.event.inputs.pr_number }} \
+            --owner ${{ github.repository_owner }} \
+            --repo ${{ github.event.repository.name }} \
+            --token ${{ github.token }}
+        
